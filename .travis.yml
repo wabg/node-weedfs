@@ -16,6 +16,9 @@ before_install:
   - docker run -d -p 127.0.0.1:9333:9333 -p 127.0.0.1:8080:8080 chrislusf/seaweedfs server
 
 before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
   - npm install -g gulp-cli
 
 script:
