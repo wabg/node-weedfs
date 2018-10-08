@@ -1,5 +1,9 @@
 # node-seaweedfs (weed-fs)
 
+[![Build Status](https://travis-ci.org/atroo/node-weedfs.svg?branch=master)](https://travis-ci.org/atroo/node-weedfs)
+[![Maintainability](https://api.codeclimate.com/v1/badges/65e9f87b30d7e2d52239/maintainability)](https://codeclimate.com/github/atroo/node-weedfs/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/65e9f87b30d7e2d52239/test_coverage)](https://codeclimate.com/github/atroo/node-weedfs/test_coverage)
+
 This project is a node.js client library for the SeaweedFS REST interface. This is a rewrite of [cruzrr](https://github.com/cruzrr/node-weedfs)'s implementation to support Promises for better error handling. Also tests have been rewritten to use mocha and check for more error cases. This module supports readable streams to be written SeaweedFS and be writable streams to fetch files.
 
 This module requires at least node 0.12 to enable native Promises.
@@ -9,15 +13,6 @@ This module requires at least node 0.12 to enable native Promises.
 [SeaweedFS](https://github.com/chrislusf/seaweedfs) is a simple and highly scalable distributed file system. It focuses on two objectives:
 * storing billions of files!
 * and serving them fast!
-
-SeaweedFS chose to implement only a key~file mapping instead of supporting full POSIX file system semantics. This can be called "NoFS". (Similar to "NoSQL")
-
-Instead of managing all file metadata in a central master, SeaweedFS manages file volumes in the central master, and allows volume servers
-to manage files and the metadata. This relieves concurrency pressure from the central master and spreads file metadata into memory on the volume servers
-allowing faster file access with just one disk read operation!
-
-SeaweedFS models after [Facebook's Haystack design paper](http://static.usenix.org/event/osdi10/tech/full_papers/Beaver.pdf) and costs only 40 bytes disk storage for each file's metadata. It is so simple with O(1) disk read that anyone is more than welcome to challenge the
-performance with actual use cases.
 
 # Install
 ```javascript
