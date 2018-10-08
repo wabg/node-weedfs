@@ -24,7 +24,6 @@ describe("seaweed delete api", function () {
             expect(buffer.toString("utf8")).to.equal("atroo");
             return client.remove(fileInfo.fid);
         }).then(function (res) {
-			console.log(res);
             expect(res).to.be.an("object");
             expect(res.count).to.be.greaterThan(0);
             done();

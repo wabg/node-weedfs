@@ -1,5 +1,5 @@
 # node-seaweedfs (weed-fs)
-
+[![npm version](https://badge.fury.io/js/node-seaweedfs.svg)](https://badge.fury.io/js/node-seaweedfs)
 [![Build Status](https://travis-ci.org/atroo/node-weedfs.svg?branch=master)](https://travis-ci.org/atroo/node-weedfs)
 [![Maintainability](https://api.codeclimate.com/v1/badges/65e9f87b30d7e2d52239/maintainability)](https://codeclimate.com/github/atroo/node-weedfs/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/65e9f87b30d7e2d52239/test_coverage)](https://codeclimate.com/github/atroo/node-weedfs/test_coverage)

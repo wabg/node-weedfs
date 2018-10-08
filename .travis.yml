@@ -1,9 +1,13 @@
 sudo: required
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d9121d2e868df2d8167268f9dadbace3af08e51f118a49ce40f066d550791758
+
 language: node_js
 node_js:
   - "node"
-  
+
 services:
   - docker
 
@@ -16,3 +20,6 @@ before_script:
 
 script:
   - gulp test
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
