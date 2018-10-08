@@ -19,6 +19,13 @@ This module requires at least node 0.12 to enable native Promises.
 npm install node-seaweedfs
 ```
 
+# node.js
+
+|seaweed client version|node.js version|
+|---|---|
+|1.3.0|0.12|
+|>= 1.4.0|>=4|
+
 # Basic Usage
 ```javascript
 var weedClient = require("node-seaweedfs");
