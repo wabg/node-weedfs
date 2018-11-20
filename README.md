@@ -33,8 +33,9 @@ npm install @wabg/node-seaweedfs
 const weedClient = require("node-seaweedfs");
 const seaweedfs = new weedClient({
   server:    "localhost",
+  port:    9333,
   DataCenterServer: "192.168.8.123", // [Optional] 
-  port:    9333
+  protocol: "https", // [Optional] 
 });
 
 seaweedfs.write("./file.png").then((fileInfo) => {
