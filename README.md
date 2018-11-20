@@ -32,9 +32,9 @@ npm install @wabg/node-seaweedfs
 ```js
 const weedClient = require("node-seaweedfs");
 const seaweedfs = new weedClient({
-	server:		"localhost",
-	DataCenterServer: "192.168.8.123", // [Optional] 
-	port:		9333
+  server:    "localhost",
+  DataCenterServer: "192.168.8.123", // [Optional] 
+  port:    9333
 });
 
 seaweedfs.write("./file.png").then((fileInfo) => {
@@ -71,39 +71,39 @@ is used with the <code>/dir/assign</code> HTTP request.  You can use this to def
 
 ```js
 client.write("./file.png", {replication: 000}).then(function(fileInfo) {
-	console.log(fileinfo);
+  console.log(fileinfo);
 }).catch(function(err) {
-    //error handling
+  // error handling
 });
 ```
 
 Instead of a path you can also pass a buffer or a stream
 
 ```js
-//using a Buffer
+// using a Buffer
 client.write(new Buffer("atroo")).then(function(fileInfo) {
-	// The fid's will be the same, to access each variaton just
-	// add _ARRAYINDEX to the end of the fid. In this case fileB
-	// would be: fid + "_1"
-	
-	var fidA = fileInfo;
-	var fidB = fileInfo + "_1";
-	
-	console.log(fileInfo);
+  // The fid's will be the same, to access each variaton just
+  // add _ARRAYINDEX to the end of the fid. In this case fileB
+  // would be: fid + "_1"
+  
+  var fidA = fileInfo;
+  var fidB = fileInfo + "_1";
+  
+  console.log(fileInfo);
 }).catch(function(err) {
-    //error handling
+  // error handling
 })
 
 //using a Stream
 client.write(getReadableStreamSomeHow()).then(function(fileInfo) {
-	// The fid's will be the same, to access each variaton just
-	// add _ARRAYINDEX to the end of the fid. In this case fileB
-	// would be: fid + "_1"
-	
-	var fidA = fileInfo;
-	var fidB = fileInfo + "_1";
-	
-	console.log(fileInfo);
+  // The fid's will be the same, to access each variaton just
+  // add _ARRAYINDEX to the end of the fid. In this case fileB
+  // would be: fid + "_1"
+  
+  var fidA = fileInfo;
+  var fidB = fileInfo + "_1";
+  
+  console.log(fileInfo);
 }).catch(function(err) {
     //error handling
 })
@@ -113,16 +113,16 @@ You can also write multiple files:
 
 ```js
 client.write(["./fileA.jpg", "./fileB.jpg"]).then(function(fileInfo) {
-	// The fid's will be the same, to access each variaton just
-	// add _ARRAYINDEX to the end of the fid. In this case fileB
-	// would be: fid + "_1"
-	
-	var fidA = fileInfo;
-	var fidB = fileInfo + "_1";
-	
-	console.log(fileInfo);
+  // The fid's will be the same, to access each variaton just
+  // add _ARRAYINDEX to the end of the fid. In this case fileB
+  // would be: fid + "_1"
+  
+  var fidA = fileInfo;
+  var fidB = fileInfo + "_1";
+  
+  console.log(fileInfo);
 }).catch(function(err) {
-    //error handling
+  // error handling
 })
 ```
 
@@ -140,9 +140,9 @@ If you prefer not to use streams just use:
 
 ```js
 client.read(fileId).then(function(Buffer) {
-	//do something with the buffer
+  // do something with the buffer
 }).catch(function(err) {
-    //error handling
+  //error handling
 });
 ```
 
@@ -152,7 +152,7 @@ This function can be used to find the location(s) of a file amongst the cluster.
 
 ```js
 client.find(fileId).then(function(json) {
-	console.log(json.locations);
+  console.log(json.locations);
 });
 ```
 
@@ -162,9 +162,9 @@ This function will delete a file from all locations.
 
 ```js
 client.remove(fileId).then(function() {
-    console.log("removed filed");
+  console.log("removed filed");
 }).catch(function(err) {
-    console.log("could not remove " + fileId);
+  console.log("could not remove " + fileId);
 });
 ```
 
@@ -174,7 +174,7 @@ This function will query the master status for status information.  The callback
 
 ```js
 client.masterStatus().then(function(status) {
-	console.log(status);
+  console.log(status);
 });
 ```
 
@@ -184,7 +184,7 @@ This function will query the master server for information about the current top
 
 ```js
 client.systemStatus().then(function(status) {
-	console.log(status);
+  console.log(status);
 });
 ```
 
@@ -194,7 +194,7 @@ This function will query an individual volume server for information about the v
 
 ```js
 client.status("127.0.0.1:8080").then(function(status) {
-	console.log(status);
+  console.log(status);
 });
 ```
 
@@ -208,6 +208,6 @@ This function will force the master server to preform garbage collection on volu
 
 ```js
 client.vacuum({garbageThreshold: 0.4}).then(function(status) {
-	console.log(status);
+  console.log(status);
 });
 ```
