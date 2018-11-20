@@ -145,6 +145,20 @@ client.read(fileId).then(function(Buffer) {
 }).catch(function(err) {
   //error handling
 });
+
+// https://github.com/chrislusf/seaweedfs#read-file
+// If you want to get a scaled version of an image, you can add some `query` params:
+client.read(fileId, null, {
+  query: {
+    height: 200,
+    width: 200,
+    mode: 'fill',
+  }
+}).then(function(Buffer) {
+  // do something with the buffer
+}).catch(function(err) {
+  //error handling
+});
 ```
 
 ## find(file)
