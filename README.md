@@ -16,8 +16,8 @@ This module requires at least node 0.12 to enable native Promises.
 
 # Install
 
-```javascript
-npm install node-seaweedfs
+```bash
+npm install @wabg/node-seaweedfs
 ```
 
 # node.js
@@ -29,7 +29,7 @@ npm install node-seaweedfs
 
 # Basic Usage
 
-```javascript
+```js
 const weedClient = require("node-seaweedfs");
 const seaweedfs = new weedClient({
 	server:		"localhost",
@@ -50,13 +50,13 @@ seaweedfs.write("./file.png").then((fileInfo) => {
 
 adjust test/testconf.js to your needs and just run
 
-```javascript
+```js
 gulp test
 ```
 
 If you want to create new tests this watch task might be handy
 
-```javascript
+```js
 gulp
 ```
 
@@ -69,7 +69,7 @@ Use the <code>write()</code> function to store files.  The callback recieves the
 Anything passed to the <code>{opts}</code> is made into a query string and
 is used with the <code>/dir/assign</code> HTTP request.  You can use this to define the replication strategy.
 
-```javascript
+```js
 client.write("./file.png", {replication: 000}).then(function(fileInfo) {
 	console.log(fileinfo);
 }).catch(function(err) {
@@ -79,7 +79,7 @@ client.write("./file.png", {replication: 000}).then(function(fileInfo) {
 
 Instead of a path you can also pass a buffer or a stream
 
-```javascript
+```js
 //using a Buffer
 client.write(new Buffer("atroo")).then(function(fileInfo) {
 	// The fid's will be the same, to access each variaton just
@@ -111,7 +111,7 @@ client.write(getReadableStreamSomeHow()).then(function(fileInfo) {
 
 You can also write multiple files:
 
-```javascript
+```js
 client.write(["./fileA.jpg", "./fileB.jpg"]).then(function(fileInfo) {
 	// The fid's will be the same, to access each variaton just
 	// add _ARRAYINDEX to the end of the fid. In this case fileB
@@ -132,13 +132,13 @@ For multiple files any combinations of path's, Buffers or Streams are allowed
 
 The read function supports streaming.  To use simply do:
 
-```javascript
+```js
 client.read(fileId, fs.createWriteStream("read.png"));
 ```
 
 If you prefer not to use streams just use:
 
-```javascript
+```js
 client.read(fileId).then(function(Buffer) {
 	//do something with the buffer
 }).catch(function(err) {
@@ -150,7 +150,7 @@ client.read(fileId).then(function(Buffer) {
 
 This function can be used to find the location(s) of a file amongst the cluster.
 
-```javascript
+```js
 client.find(fileId).then(function(json) {
 	console.log(json.locations);
 });
@@ -160,7 +160,7 @@ client.find(fileId).then(function(json) {
 
 This function will delete a file from all locations.
 
-```javascript
+```js
 client.remove(fileId).then(function() {
     console.log("removed filed");
 }).catch(function(err) {
@@ -172,7 +172,7 @@ client.remove(fileId).then(function() {
 
 This function will query the master status for status information.  The callback contains an object containing the information about which master server is the leader and which master servers are available.
 
-```javascript
+```js
 client.masterStatus().then(function(status) {
 	console.log(status);
 });
@@ -182,7 +182,7 @@ client.masterStatus().then(function(status) {
 
 This function will query the master server for information about the current topology and available storage layouts.
 
-```javascript
+```js
 client.systemStatus().then(function(status) {
 	console.log(status);
 });
@@ -192,7 +192,7 @@ client.systemStatus().then(function(status) {
 
 This function will query an individual volume server for information about the volumes on this server.
 
-```javascript
+```js
 client.status("127.0.0.1:8080").then(function(status) {
 	console.log(status);
 });
@@ -206,7 +206,7 @@ This function will force the master server to preform garbage collection on volu
 >
 > If your system has many deletions, the deleted file's disk space will not be synchronously re-claimed. There is a background job to check volume disk usage. If empty space is more than the threshold, default to 0.3, the vacuum job will make the volume readonly, create a new volume with only existing files, and switch on the new volume. If you are impatient or doing some testing, vacuum the unused spaces this way.
 
-```javascript
+```js
 client.vacuum({garbageThreshold: 0.4}).then(function(status) {
 	console.log(status);
 });
