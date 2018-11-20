@@ -1,4 +1,9 @@
 {
+    "name": "@wabg/node-seaweedfs",
+    "description": "Node.js client for seaweed-fs, a distributed file store",
+    "homepage": "https://github.com/wabg/node-weedfs",
+    "version": "1.4.0",
+    "main": "./index",
     "author": "atroo",
     "license": "ISC",
     "contributors": [
@@ -19,14 +24,9 @@
         "filestorage",
         "distributed"
     ],
-    "name": "node-seaweedfs",
-    "description": "Node.js client for seaweed-fs, a distributed file store",
-    "homepage": "https://github.com/atroo/node-weedfs",
-    "version": "1.4.0",
-    "main": "./index",
     "repository": {
         "type": "git",
-        "url": "git://github.com/atroo/node-weedfs"
+        "url": "git://github.com/wabg/node-weedfs"
     },
     "dependencies": {
         "form-data": "^2.3.2"

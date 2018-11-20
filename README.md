@@ -15,6 +15,7 @@ This module requires at least node 0.12 to enable native Promises.
 * and serving them fast!
 
 # Install
+
 ```javascript
 npm install node-seaweedfs
 ```
@@ -27,31 +28,34 @@ npm install node-seaweedfs
 |>= 1.4.0|>=4|
 
 # Basic Usage
-```javascript
-var weedClient = require("node-seaweedfs");
 
-var seaweedfs     = new weedClient({
+```javascript
+const weedClient = require("node-seaweedfs");
+const seaweedfs = new weedClient({
 	server:		"localhost",
+	DataCenterServer: "192.168.8.123", // [Optional] 
 	port:		9333
 });
 
-seaweedfs.write("./file.png").then(function(fileInfo) {
-    return seaweedfs.read(fileInfo.fid);
-}).then(function(Buffer) {
-    //do something with the buffer
-}).catch(function(err) {
-    //error handling
+seaweedfs.write("./file.png").then((fileInfo) => {
+  return seaweedfs.read(fileInfo.fid);
+}).then((Buffer) => {
+  // do something with the buffer
+}).catch((err) => {
+  // error handling
 });
 ```
 
 # Test
 
 adjust test/testconf.js to your needs and just run
+
 ```javascript
 gulp test
 ```
 
 If you want to create new tests this watch task might be handy
+
 ```javascript
 gulp
 ```
@@ -74,6 +78,7 @@ client.write("./file.png", {replication: 000}).then(function(fileInfo) {
 ```
 
 Instead of a path you can also pass a buffer or a stream
+
 ```javascript
 //using a Buffer
 client.write(new Buffer("atroo")).then(function(fileInfo) {
@@ -105,6 +110,7 @@ client.write(getReadableStreamSomeHow()).then(function(fileInfo) {
 ```
 
 You can also write multiple files:
+
 ```javascript
 client.write(["./fileA.jpg", "./fileB.jpg"]).then(function(fileInfo) {
 	// The fid's will be the same, to access each variaton just
@@ -125,11 +131,13 @@ For multiple files any combinations of path's, Buffers or Streams are allowed
 ## read(fileId, [stream])
 
 The read function supports streaming.  To use simply do:
+
 ```javascript
 client.read(fileId, fs.createWriteStream("read.png"));
 ```
 
 If you prefer not to use streams just use:
+
 ```javascript
 client.read(fileId).then(function(Buffer) {
 	//do something with the buffer
@@ -141,6 +149,7 @@ client.read(fileId).then(function(Buffer) {
 ## find(file)
 
 This function can be used to find the location(s) of a file amongst the cluster.
+
 ```javascript
 client.find(fileId).then(function(json) {
 	console.log(json.locations);
@@ -150,6 +159,7 @@ client.find(fileId).then(function(json) {
 ## remove(file)
 
 This function will delete a file from all locations.
+
 ```javascript
 client.remove(fileId).then(function() {
     console.log("removed filed");
@@ -201,19 +211,3 @@ client.vacuum({garbageThreshold: 0.4}).then(function(status) {
 	console.log(status);
 });
 ```
-
-# License
-
-Copyright (c) 2015, atroo GbR
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
