@@ -2,7 +2,7 @@
     "name": "@wabg/node-seaweedfs",
     "description": "Node.js client for seaweed-fs, a distributed file store",
     "homepage": "https://github.com/wabg/node-weedfs",
-    "version": "1.4.5",
+    "version": "1.4.6",
     "main": "./index",
     "author": "atroo",
     "license": "ISC",
